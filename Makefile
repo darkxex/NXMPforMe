@@ -45,11 +45,11 @@ INCLUDES	:=	libs/simpleini libs/imgui include source/touchcontrols source/playli
 ROMFS		:=	romfs
 
 VERSION_MAJOR := 0
-VERSION_MINOR := 6
+VERSION_MINOR := 1
 VERSION_MICRO := 0
 
-APP_TITLE     := NXMP
-APP_AUTHOR    := proconsule
+APP_TITLE     := NXMPforMe
+APP_AUTHOR    := proconsule & Modded by Angel Xex
 APP_VERSION   := ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}
 
 

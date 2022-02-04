@@ -43,6 +43,13 @@ namespace Windows {
 							io.ConfigFlags |= ImGuiConfigFlags_NoMouse;
 						}
 					}
+                    ImGui::Dummy(ImVec2(0.0f,30.0f));
+					ImGui::Text("OverClock Info");
+					ImGui::Separator();
+					ImGui::Text("This fork uses the same OverClock as the PPlay player:");
+					ImGui::Text("CPU Clock: 1785.0");
+					ImGui::Text("GPU Clock: 921.6");
+					ImGui::Text("EMC Clock: 1600.0");
 					
 					
 					ImGui::EndTabItem();

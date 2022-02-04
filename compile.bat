@@ -1,0 +1,1 @@
+make -j20 && nxlink NXMPforMe.nro -s -a 192.168.0.11

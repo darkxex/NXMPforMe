@@ -101,7 +101,7 @@ shaderMania* shadermania = nullptr;
 
 const GLuint WIDTH = 1280, HEIGHT = 720;
 
-std::string nxmpTitle = std::string("NXMP v") + std::to_string(VERSION_MAJOR) + std::string(".") + std::to_string(VERSION_MINOR) + std::string(".") + std::to_string(VERSION_MICRO);
+std::string nxmpTitle = std::string("NXMP for Me v") + std::to_string(VERSION_MAJOR) + std::string(".") + std::to_string(VERSION_MINOR) + std::string(".") + std::to_string(VERSION_MICRO);
 
 
 static bool init() {

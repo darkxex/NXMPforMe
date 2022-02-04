@@ -80,6 +80,7 @@ enum PLAYER_RIGHT_MENU_STATES {
 	PLAYER_RIGHT_MENU_TRACKS_AUDIO,
 	PLAYER_RIGHT_MENU_TRACKS_SUB,
 	PLAYER_RIGHT_MENU_CHAPTERS,
+	PLAYER_RIGHT_MENU_INTERPOLATION,
 	PLAYER_RIGHT_MENU_ARATIO,
 	PLAYER_RIGHT_MENU_CUSTOMARATIO,
 	PLAYER_RIGHT_MENU_IMAGE,
@@ -117,6 +118,7 @@ typedef struct {
 	int playershowcontrols = false;
 	int playershowstats = false;
 	bool masterlock = false;
+	bool interpolation = false;
 	
 	bool first_item;
 	bool focus;

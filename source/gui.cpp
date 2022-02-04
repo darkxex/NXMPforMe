@@ -45,6 +45,11 @@ namespace GUI {
 		}
 		
 	}
+
+	void toggleInterpolation(){
+
+		mpv_command_string(libmpv->getHandle(), "cycle-values video-sync display-resample audio ; cycle-values interpolation yes no ; show-text \"Interpolation: ${interpolation} (${tscale})\"");
+	}
 	
 	
 	void HandleEvents(){
@@ -327,6 +332,11 @@ namespace GUI {
 						
 					}
 					
+					if (button == SDL_KEY_LSTICK){
+						if(item.state == MENU_STATE_PLAYER){
+							toggleInterpolation();
+						}
+					}
 					if (button == SDL_KEY_RSTICK){
 						if(item.state == MENU_STATE_PLAYER){
 							toggleMasterLock();
@@ -515,6 +525,9 @@ namespace GUI {
 								item.rightmenustate = PLAYER_RIGHT_MENU_TRACKS;
 							}
 							else if(item.rightmenustate == PLAYER_RIGHT_MENU_CHAPTERS){
+								item.rightmenustate = PLAYER_RIGHT_MENU_HOME;
+							}
+							else if(item.rightmenustate == PLAYER_RIGHT_MENU_INTERPOLATION){
 								item.rightmenustate = PLAYER_RIGHT_MENU_HOME;
 							}
 							else if(item.rightmenustate == PLAYER_RIGHT_MENU_ARATIO){
@@ -792,6 +805,9 @@ namespace GUI {
 					break;
 				case PLAYER_RIGHT_MENU_CHAPTERS:
 					playerWindows::RightChapterWindow(&item.rightmenu_focus,&item.rightmenu_first_item);
+					break;
+				case PLAYER_RIGHT_MENU_INTERPOLATION:
+					playerWindows::RightHomeInterpolation(&item.rightmenu_focus,&item.rightmenu_first_item);
 					break;
 				case PLAYER_RIGHT_MENU_ARATIO:
 					playerWindows::RightHomeARatio(&item.rightmenu_focus,&item.rightmenu_first_item);

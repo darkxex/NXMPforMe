@@ -3,7 +3,14 @@ NXMP for Me
 NXMP for Me is a custom build of video player (NXMP) for Nintendo Switch with Special Addons.
 - OverClocked (CPU, GPU and EMC)
 - Select default subtitle language.
-- Video interpolation (60fps?)
+- Video interpolation (4 Modes)
+
+![2022020417382700-5A5FEC0B9A2FB2402F211552C541E27F](https://user-images.githubusercontent.com/17991404/152600762-00fc3684-88b1-4511-b218-dbe49ba6147b.jpg)
+![2022020417383400-5A5FEC0B9A2FB2402F211552C541E27F](https://user-images.githubusercontent.com/17991404/152600767-b7384517-0adb-486a-a12c-8962b062a7ec.jpg)
+![2022020417390000-5A5FEC0B9A2FB2402F211552C541E27F](https://user-images.githubusercontent.com/17991404/152600781-24d11f1d-d3be-490a-a325-a17828c32844.jpg)
+![2022020417391000-5A5FEC0B9A2FB2402F211552C541E27F](https://user-images.githubusercontent.com/17991404/152600789-1c81e063-d304-4357-8a1d-ff06f41871bd.jpg)
+
+----------------------------------------------------------------------------
 
 ![Banner](docs/banner.jpg)
 NXMP is a video player for Nintendo Switch based on [MPV](https://mpv.io/).

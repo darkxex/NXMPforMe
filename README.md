@@ -4,6 +4,7 @@ NXMP for Me is a custom build of video player (NXMP) for Nintendo Switch with Sp
 - OverClocked (CPU, GPU and EMC) (thanks to the overclock, the shaders and the interpolation now work amazing)
 - Select default subtitle language.
 - Video interpolation (4 Modes)
+- Implemented Anime4K v4.0.1 Upscaler.
 ![2022020500491500-5A5FEC0B9A2FB2402F211552C541E27F](https://user-images.githubusercontent.com/17991404/152627703-f11b9cfb-9cf9-456d-9da1-106f440ec40a.jpg)
 ![2022020500492300-5A5FEC0B9A2FB2402F211552C541E27F](https://user-images.githubusercontent.com/17991404/152627706-2d784cab-e574-4dc0-9113-309a3dff69f3.jpg)
 ![2022020417382700-5A5FEC0B9A2FB2402F211552C541E27F](https://user-images.githubusercontent.com/17991404/152600762-00fc3684-88b1-4511-b218-dbe49ba6147b.jpg)

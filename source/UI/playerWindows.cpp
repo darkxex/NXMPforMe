@@ -249,10 +249,10 @@ namespace playerWindows{
 		playerWindows::ExitWindow();
 	}
 	  //Used For 1080p screens with less powerful GPUs:
-	  //https://github.com/bloc97/Anime4K/blob/c75e2b501f74bc808c7551b6be67d9052e862fe5/GLSL_Instructions.md
+	  //https://github.com/bloc97/Anime4K/blob/815b122284304e6e1e244a8cf6a160eeaa07040c/GLSL_Instructions.md
 		void RightHomeAnime4K(bool *focus, bool *first_item){
 		playerWindows::SetupRightWindow();
-		std::vector<std::string> topmenu  = {"M_1080p","M_720p->1080p","M_SD->1080p","O_SD->1080p","Show Info","Disabled"};
+		std::vector<std::string> topmenu  = {"Anime4K: Mode A (Fast)","Anime4K: Mode B (Fast)","Mode C (Fast)","Mode A+A (Fast)","Mode B+B (Fast)","Mode C+A (Fast)","Show Info","Disabled"};
 		if (ImGui::Begin("Right Menu ARatio", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoScrollbar)) {
 			ImGui::SetNextWindowFocus();
 			if (ImGui::BeginListBox("Aspect Ratio",ImVec2(200.0f, 720.0f))){
@@ -260,24 +260,32 @@ namespace playerWindows{
 					static int selected = -1;
 					if (ImGui::Selectable(topmenu[n].c_str(), selected == n)){
 						if(n==0){
-						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl\"; show-text \"Anime4K: Modern 1080p (Fast)\"");
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/anime4k/Anime4K_Clamp_Highlights.glsl:./mpv/anime4k/Anime4K_Restore_CNN_M.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_M.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x2.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x4.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_S.glsl\"; show-text \"Anime4K: Mode A (Fast)\"");
 							}
 						if(n==1){
-						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Light_M.glsl:./mpv/shaders/Anime4K_Upscale_CNN_x2_M.glsl\"; show-text \"Anime4K: Modern 720p->1080p (Fast)\"");
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/anime4k/Anime4K_Clamp_Highlights.glsl:./mpv/anime4k/Anime4K_Restore_CNN_Soft_M.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_M.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x2.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x4.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_S.glsl\"; show-text \"Anime4K: Mode B (Fast)\"");
   
 						}
 						if(n==2){
-						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Upscale_Denoise_CNN_x2_M.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl\"; show-text \"Anime4K: Modern SD->1080p (Fast)\"");
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/anime4k/Anime4K_Clamp_Highlights.glsl:./mpv/anime4k/Anime4K_Upscale_Denoise_CNN_x2_M.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x2.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x4.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_S.glsl\"; show-text \"Anime4K: Mode C (Fast)\"");
   
 						}
 						if(n==3){
-						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Light_M.glsl:./mpv/shaders/Anime4K_Upscale_CNN_x2_M.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl\"; show-text \"Anime4K: Old SD->1080p (Fast)\"");
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/anime4k/Anime4K_Clamp_Highlights.glsl:./mpv/anime4k/Anime4K_Restore_CNN_M.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_M.glsl:./mpv/anime4k/Anime4K_Restore_CNN_S.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x2.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x4.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_S.glsl\"; show-text \"Anime4K: Mode A+A (Fast)\"");
    
 						}
 						if(n==4){
-						mpv_command_string(libmpv->getHandle(), "show-text \"Shaders: ${glsl-shaders}\"");
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/anime4k/Anime4K_Clamp_Highlights.glsl:./mpv/anime4k/Anime4K_Restore_CNN_Soft_M.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_M.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x2.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x4.glsl:./mpv/anime4k/Anime4K_Restore_CNN_Soft_S.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_S.glsl\"; show-text \"Anime4K: Mode B+B (Fast)\"");
+   
 						}
 						if(n==5){
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/anime4k/Anime4K_Clamp_Highlights.glsl:./mpv/anime4k/Anime4K_Upscale_Denoise_CNN_x2_M.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x2.glsl:./mpv/anime4k/Anime4K_AutoDownscalePre_x4.glsl:./mpv/anime4k/Anime4K_Restore_CNN_S.glsl:./mpv/anime4k/Anime4K_Upscale_CNN_x2_S.glsl\"; show-text \"Anime4K: Mode C+A (Fast)\"");
+   
+						}
+						if(n==6){
+						mpv_command_string(libmpv->getHandle(), "show-text \"Shaders: ${glsl-shaders}\"");
+						}
+						if(n==7){
 						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders clr \"\"; show-text \"Anime4K Disabled\"");
 						}
 					}

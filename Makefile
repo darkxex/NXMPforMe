@@ -46,7 +46,7 @@ ROMFS		:=	romfs
 
 VERSION_MAJOR := 0
 VERSION_MINOR := 1
-VERSION_MICRO := 1
+VERSION_MICRO := 2
 
 APP_TITLE     := NXMPforMe
 APP_AUTHOR    := proconsule & Modded by Angel Xex

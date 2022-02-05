@@ -1,4 +1,5 @@
 build/
+nxmp/
 build-win32/
 nxmp.*
 NXMPforMe.*

@@ -41,7 +41,7 @@ namespace playerWindows{
 		rightmenuposX = item.rightmenu_startpos;
 		if(item.rightmenu_startpos>1080)item.rightmenu_startpos-=10;
 		playerWindows::SetupRightWindow();
-		std::vector<std::string> topmenu  = {"Tracks","Chapters","Interpolation","Aspect Ratio","Image","Audio","Subtitle","ShaderMania", "Anime4K UpScaler"};
+		std::vector<std::string> topmenu  = {"Tracks","Chapters","Interpolation","Aspect Ratio","Image","Audio","Subtitle","ShaderMania", "Anime4K"};
 		if (ImGui::Begin("Right Menu Home", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoScrollbar)) {
 			ImGui::SetNextWindowFocus();
 			if (ImGui::BeginListBox("Right Menu Home List",ImVec2(1280.0f, 720.0f))){
@@ -72,7 +72,7 @@ namespace playerWindows{
 						if(topmenu[n] == "ShaderMania"){
 							item.rightmenustate = PLAYER_RIGHT_MENU_SHADERMANIA;
 						}
-						if(topmenu[n] == "Anime4K UpScaler"){
+						if(topmenu[n] == "Anime4K"){
 							item.rightmenustate = PLAYER_RIGHT_MENU_ANIME4K;
 						}
 					}
@@ -248,10 +248,11 @@ namespace playerWindows{
 		}
 		playerWindows::ExitWindow();
 	}
-	
+	  //Used For 1080p screens with less powerful GPUs:
+	  //https://github.com/bloc97/Anime4K/blob/c75e2b501f74bc808c7551b6be67d9052e862fe5/GLSL_Instructions.md
 		void RightHomeAnime4K(bool *focus, bool *first_item){
 		playerWindows::SetupRightWindow();
-		std::vector<std::string> topmenu  = {"Modern 1080p (Fast)","Modern 720p->1080p (Fast)","Modern SD->1080p (Fast)","Old SD->1080p (Fast)","Disabled"};
+		std::vector<std::string> topmenu  = {"M_1080p","M_720p->1080p","M_SD->1080p","O_SD->1080p","Show Info","Disabled"};
 		if (ImGui::Begin("Right Menu ARatio", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoScrollbar)) {
 			ImGui::SetNextWindowFocus();
 			if (ImGui::BeginListBox("Aspect Ratio",ImVec2(200.0f, 720.0f))){
@@ -274,9 +275,10 @@ namespace playerWindows{
    
 						}
 						if(n==4){
+						mpv_command_string(libmpv->getHandle(), "show-text \"Shaders: ${glsl-shaders}\"");
+						}
+						if(n==5){
 						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders clr \"\"; show-text \"Anime4K Disabled\"");
-   
-						
 						}
 					}
 				}

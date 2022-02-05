@@ -45,10 +45,12 @@ namespace GUI {
 		}
 		
 	}
-
+    
 	void toggleInterpolation(){
+       
+	
+	libmpv->setShader("./mpv/shaders/invert.glsl");
 
-		mpv_command_string(libmpv->getHandle(), "cycle-values video-sync display-resample audio ; cycle-values interpolation yes no ; show-text \"Interpolation: ${interpolation} (${tscale})\"");
 	}
 	
 	

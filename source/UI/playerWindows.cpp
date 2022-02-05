@@ -41,7 +41,7 @@ namespace playerWindows{
 		rightmenuposX = item.rightmenu_startpos;
 		if(item.rightmenu_startpos>1080)item.rightmenu_startpos-=10;
 		playerWindows::SetupRightWindow();
-		std::vector<std::string> topmenu  = {"Tracks","Chapters","Interpolation","Aspect Ratio","Image","Audio","Subtitle","ShaderMania", "Anime4K"};
+		std::vector<std::string> topmenu  = {"Tracks","Chapters","Interpolation","Aspect Ratio","Image","Audio","Subtitle","ShaderMania", "Anime4K v4.0.1"};
 		if (ImGui::Begin("Right Menu Home", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoScrollbar)) {
 			ImGui::SetNextWindowFocus();
 			if (ImGui::BeginListBox("Right Menu Home List",ImVec2(1280.0f, 720.0f))){
@@ -72,7 +72,7 @@ namespace playerWindows{
 						if(topmenu[n] == "ShaderMania"){
 							item.rightmenustate = PLAYER_RIGHT_MENU_SHADERMANIA;
 						}
-						if(topmenu[n] == "Anime4K"){
+						if(topmenu[n] == "Anime4K v4.0.1"){
 							item.rightmenustate = PLAYER_RIGHT_MENU_ANIME4K;
 						}
 					}
@@ -252,7 +252,7 @@ namespace playerWindows{
 	  //https://github.com/bloc97/Anime4K/blob/815b122284304e6e1e244a8cf6a160eeaa07040c/GLSL_Instructions.md
 		void RightHomeAnime4K(bool *focus, bool *first_item){
 		playerWindows::SetupRightWindow();
-		std::vector<std::string> topmenu  = {"Anime4K: Mode A (Fast)","Anime4K: Mode B (Fast)","Mode C (Fast)","Mode A+A (Fast)","Mode B+B (Fast)","Mode C+A (Fast)","Show Info","Disabled"};
+		std::vector<std::string> topmenu  = {"Mode A (Fast)","Mode B (Fast)","Mode C (Fast)","Mode A+A (Fast)","Mode B+B (Fast)","Mode C+A (Fast)","Show Info","Disabled"};
 		if (ImGui::Begin("Right Menu ARatio", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoScrollbar)) {
 			ImGui::SetNextWindowFocus();
 			if (ImGui::BeginListBox("Aspect Ratio",ImVec2(200.0f, 720.0f))){

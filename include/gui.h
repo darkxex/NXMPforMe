@@ -87,6 +87,7 @@ enum PLAYER_RIGHT_MENU_STATES {
 	PLAYER_RIGHT_MENU_AUDIO,
 	PLAYER_RIGHT_MENU_SUB,
 	PLAYER_RIGHT_MENU_SHADERMANIA,
+	PLAYER_RIGHT_MENU_ANIME4K,
 	PLAYER_AUDIOEQ,
 	PLAYER_SUPERAUDIOEQ
 };
@@ -118,7 +119,6 @@ typedef struct {
 	int playershowcontrols = false;
 	int playershowstats = false;
 	bool masterlock = false;
-	bool interpolation = false;
 	
 	bool first_item;
 	bool focus;

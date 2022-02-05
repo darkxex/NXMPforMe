@@ -79,6 +79,7 @@ namespace playerWindows{
 	void RightTrackAudioWindow(bool *focus, bool *first_item);
 	void RightTrackSubWindow(bool *focus, bool *first_item);
 	void RightHomeInterpolation(bool *focus, bool *first_item);
+	void RightHomeAnime4K(bool *focus, bool *first_item);
 	void RightHomeARatio(bool *focus, bool *first_item);
 	void RightHomeCustomARatio(bool *focus, bool *first_item);
 	void RightHomeImage(bool *focus, bool *first_item);

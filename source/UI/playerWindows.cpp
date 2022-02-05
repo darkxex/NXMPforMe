@@ -41,7 +41,7 @@ namespace playerWindows{
 		rightmenuposX = item.rightmenu_startpos;
 		if(item.rightmenu_startpos>1080)item.rightmenu_startpos-=10;
 		playerWindows::SetupRightWindow();
-		std::vector<std::string> topmenu  = {"Tracks","Chapters","Interpolation","Aspect Ratio","Image","Audio","Subtitle","ShaderMania"};
+		std::vector<std::string> topmenu  = {"Tracks","Chapters","Interpolation","Aspect Ratio","Image","Audio","Subtitle","ShaderMania", "Anime4K UpScaler"};
 		if (ImGui::Begin("Right Menu Home", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoScrollbar)) {
 			ImGui::SetNextWindowFocus();
 			if (ImGui::BeginListBox("Right Menu Home List",ImVec2(1280.0f, 720.0f))){
@@ -71,6 +71,9 @@ namespace playerWindows{
 						}
 						if(topmenu[n] == "ShaderMania"){
 							item.rightmenustate = PLAYER_RIGHT_MENU_SHADERMANIA;
+						}
+						if(topmenu[n] == "Anime4K UpScaler"){
+							item.rightmenustate = PLAYER_RIGHT_MENU_ANIME4K;
 						}
 					}
 				}
@@ -246,6 +249,47 @@ namespace playerWindows{
 		playerWindows::ExitWindow();
 	}
 	
+		void RightHomeAnime4K(bool *focus, bool *first_item){
+		playerWindows::SetupRightWindow();
+		std::vector<std::string> topmenu  = {"Modern 1080p (Fast)","Modern 720p->1080p (Fast)","Modern SD->1080p (Fast)","Old SD->1080p (Fast)","Disabled"};
+		if (ImGui::Begin("Right Menu ARatio", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoScrollbar)) {
+			ImGui::SetNextWindowFocus();
+			if (ImGui::BeginListBox("Aspect Ratio",ImVec2(200.0f, 720.0f))){
+				for (unsigned int n = 0; n < topmenu.size(); n++){
+					static int selected = -1;
+					if (ImGui::Selectable(topmenu[n].c_str(), selected == n)){
+						if(n==0){
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl\"; show-text \"Anime4K: Modern 1080p (Fast)\"");
+							}
+						if(n==1){
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Light_M.glsl:./mpv/shaders/Anime4K_Upscale_CNN_x2_M.glsl\"; show-text \"Anime4K: Modern 720p->1080p (Fast)\"");
+  
+						}
+						if(n==2){
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Upscale_Denoise_CNN_x2_M.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl\"; show-text \"Anime4K: Modern SD->1080p (Fast)\"");
+  
+						}
+						if(n==3){
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Light_M.glsl:./mpv/shaders/Anime4K_Upscale_CNN_x2_M.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl\"; show-text \"Anime4K: Old SD->1080p (Fast)\"");
+   
+						}
+						if(n==4){
+						mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders clr \"\"; show-text \"Anime4K Disabled\"");
+   
+						
+						}
+					}
+				}
+				if (*first_item) {
+					ImGui::SetFocusID(ImGui::GetID(topmenu[0].c_str()), ImGui::GetCurrentWindow());
+					*first_item = false;
+				}
+				ImGui::EndListBox();
+			}
+		}
+		playerWindows::ExitWindow();
+	}
+
 	void RightHomeInterpolation(bool *focus, bool *first_item){
 		playerWindows::SetupRightWindow();
 		std::vector<std::string> topmenu  = {"Enable/Disable","Catmull-Rom","Mitchell","Bicubic","OverSample"};

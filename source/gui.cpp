@@ -48,8 +48,15 @@ namespace GUI {
     
 	void toggleInterpolation(){
        
-	
-	libmpv->setShader("./mpv/shaders/invert.glsl");
+	//Anime4K: Modern 1080p (Fast)
+	//mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl:./mpv/shaders/invert.glsl\"; show-text \"Anime4K: Modern 1080p (Fast)\"");
+	//Anime4K: Modern 720p->1080p (Fast)
+	//mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Light_M.glsl:./mpv/shaders/Anime4K_Upscale_CNN_x2_M.glsl:./mpv/shaders/invert.glsl\"; show-text \"Anime4K: Modern 720p->1080p (Fast)\"");
+    //Anime4K: Modern SD->1080p (Fast)
+	//mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Upscale_Denoise_CNN_x2_M.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl:./mpv/shaders/invert.glsl\"; show-text \"Anime4K: Modern SD->1080p (Fast)\"");
+   //Anime4K: Old SD->1080p (Fast)
+	//mpv_command_string(libmpv->getHandle(), "no-osd change-list glsl-shaders set \"./mpv/shaders/Anime4K_Clamp_Highlights.glsl:./mpv/shaders/Anime4K_Restore_CNN_Light_M.glsl:./mpv/shaders/Anime4K_Upscale_CNN_x2_M.glsl:./mpv/shaders/Anime4K_Restore_CNN_Moderate_M.glsl:./mpv/shaders/invert.glsl\"; show-text \"Anime4K: Old SD->1080p (Fast)\"");
+   
 
 	}
 	
@@ -532,6 +539,9 @@ namespace GUI {
 							else if(item.rightmenustate == PLAYER_RIGHT_MENU_INTERPOLATION){
 								item.rightmenustate = PLAYER_RIGHT_MENU_HOME;
 							}
+							else if(item.rightmenustate == PLAYER_RIGHT_MENU_ANIME4K){
+								item.rightmenustate = PLAYER_RIGHT_MENU_HOME;
+							}
 							else if(item.rightmenustate == PLAYER_RIGHT_MENU_ARATIO){
 								item.rightmenustate = PLAYER_RIGHT_MENU_HOME;
 							}
@@ -810,6 +820,9 @@ namespace GUI {
 					break;
 				case PLAYER_RIGHT_MENU_INTERPOLATION:
 					playerWindows::RightHomeInterpolation(&item.rightmenu_focus,&item.rightmenu_first_item);
+					break;
+				case PLAYER_RIGHT_MENU_ANIME4K:
+					playerWindows::RightHomeAnime4K(&item.rightmenu_focus,&item.rightmenu_first_item);
 					break;
 				case PLAYER_RIGHT_MENU_ARATIO:
 					playerWindows::RightHomeARatio(&item.rightmenu_focus,&item.rightmenu_first_item);
